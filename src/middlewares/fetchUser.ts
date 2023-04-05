@@ -1,11 +1,10 @@
 import dotenv from 'dotenv'
 import jwt from 'jsonwebtoken'
 import { Response, NextFunction } from 'express'
-import FetchUserRequest from '../interfaces/FetchUserRequest'
 import FetchUserJwtPayload from '../interfaces/FetchUserJWTPayload'
 dotenv.config()
 const JWT_SECRET = process.env.JWT_SECRET || "Th15i5TeM9JWT"
-const fetchUser = async (req: FetchUserRequest, res: Response, next: NextFunction) => {
+const fetchUser = async (req: any, res: Response, next: NextFunction) => {
     const token = req.header('auth-token')
     if (!token) {
         return res.json({ success: false, message: 'Authentication token is required.' })
