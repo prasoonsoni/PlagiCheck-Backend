@@ -3,7 +3,7 @@ const { Schema } = mongoose
 const ResearchPaperSchema = new Schema({
     user_id: { type: mongoose.Types.ObjectId, required: true },
     title: { type: String, default: '' },
-    researchers: { type: String, default: '' },
+    authors: { type: String, default: '' },
     keywords: { type: String, default: '' },
     introduction: { type: String, default: '' },
     problem_statement_and_objectives: { type: String, default: '' },
