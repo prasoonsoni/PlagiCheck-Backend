@@ -1,4 +1,4 @@
-import Example from "../models/Example"
+import Example from "../models/User"
 import ExampleBody from "../interfaces/ExampleBody"
 import { Request, Response } from "express"
 

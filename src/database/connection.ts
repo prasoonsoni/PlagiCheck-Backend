@@ -1,7 +1,7 @@
 import dotenv from "dotenv"
 import mongoose from "mongoose"
 dotenv.config()
-const MONGO_URI: string = process.env.MONGO_URI || "mongodb://localhost:27017/example"
+const MONGO_URI: string = process.env.MONGO_URI || "mongodb://localhost:27017/plagicheck"
 
 const connectToMongoDB = () => {
     try {
