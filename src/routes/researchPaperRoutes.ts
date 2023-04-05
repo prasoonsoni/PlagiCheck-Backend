@@ -4,7 +4,7 @@ import fetchUser from "../middlewares/fetchUser"
 const router: Router = express.Router()
 
 router.use(fetchUser)
-router.get('/:id', researchPaperController.getResearchPaperById)
+router.get('/get/:id', researchPaperController.getResearchPaperById)
 router.get('/all', researchPaperController.getAllResearchPapers)
 router.post('/create', researchPaperController.createResearchPaper)
 router.put('/edit/:id', researchPaperController.editResearchPaper)

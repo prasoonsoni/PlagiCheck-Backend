@@ -43,12 +43,14 @@ const checkLevelOne = async (req: any, res: Response) => {
                     })
                 })
                 const data: any = await result.json()
-                sum += data.level1_check * 100
-                const report = { id: allPapers[i]._id, plagiarism: data.level1_check * 100 }
-                plagiarismReport.push(report)
+                if (data.level1_check * 100 >= 10) {
+                    sum += data.level1_check * 100
+                    const report = { id: allPapers[i]._id, plagiarism: data.level1_check * 100 }
+                    plagiarismReport.push(report)
+                }
             }
         }
-        return res.json({ success: true, message: 'Level 1 Plagiarism report generated successfully.', data: plagiarismReport, mean: sum / allPapers.length })
+        return res.json({ success: true, message: 'Level 1 Plagiarism report generated successfully.', data: plagiarismReport, mean: sum / plagiarismReport.length })
 
     } catch (error: any) {
         console.log(error.message)
@@ -99,11 +101,14 @@ const checkLevelTwo = async (req: any, res: Response) => {
                 })
             })
             const data = await result.json()
-            sum += data.similarity_score * 100
-            const report = { id: allPapers[i]._id, plagiarism: data.similarity_score * 100, }
-            plagiarismReport.push(report)
+            if (data.similarity_score * 100 >= 10) {
+                sum += data.similarity_score * 100
+                const report = { id: allPapers[i]._id, plagiarism: data.similarity_score * 100, }
+                plagiarismReport.push(report)
+            }
+
         }
-        return res.json({ success: true, message: 'Level 2 Plagiarism report generated successfully.', data: plagiarismReport, mean: sum / allPapers.length })
+        return res.json({ success: true, message: 'Level 2 Plagiarism report generated successfully.', data: plagiarismReport, mean: sum / plagiarismReport.length })
 
     } catch (error: any) {
         console.log(error.message)
