@@ -5,6 +5,7 @@ import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 dotenv.config()
 const JWT_SECRET = process.env.JWT_SECRET || "Th15i5TeM9JWT"
+
 const createUser = async (req: Request, res: Response) => {
     try {
         const { email, password } = req.body
