@@ -3,11 +3,10 @@ import researchPaperController from "../controllers/researchPaperController"
 import fetchUser from "../middlewares/fetchUser"
 const router: Router = express.Router()
 
-router.use(fetchUser)
 router.get('/get/:id', researchPaperController.getResearchPaperById)
-router.get('/all', researchPaperController.getAllResearchPapers)
-router.post('/create', researchPaperController.createResearchPaper)
-router.put('/edit/:id', researchPaperController.editResearchPaper)
-router.delete('/delete/:id', researchPaperController.deleteResearchPaper)
+router.get('/all',fetchUser, researchPaperController.getAllResearchPapers)
+router.post('/create', fetchUser,  researchPaperController.createResearchPaper)
+router.put('/edit/:id', fetchUser,  researchPaperController.editResearchPaper)
+router.delete('/delete/:id', fetchUser, researchPaperController.deleteResearchPaper)
 
 export default router

@@ -85,16 +85,8 @@ const deleteResearchPaper = async (req: any, res: Response) => {
 
 const getResearchPaperById = async (req: any, res: Response) => {
     try {
-        const user_id = new ObjectId(req.user._id)
         const research_paper_id = new ObjectId(req.params.id)
-        if (!user_id || !research_paper_id) {
-            return res.json({ success: false, message: 'User Or Research Paper Not Found.' })
-        }
-        if (!user_id) {
-            return res.json({ success: false, message: 'User Not Found.' })
-        }
         const researchPaper = await ResearchPaper.findOne({ _id: research_paper_id })
-
         if (!researchPaper) {
             return res.json({ success: false, message: 'Research Paper Not Found.' })
         }
